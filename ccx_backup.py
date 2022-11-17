@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from parser import parse_args
+from cli_parser import parse_args
 
 
 class CcxServer:
