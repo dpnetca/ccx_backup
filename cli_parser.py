@@ -33,7 +33,7 @@ def parse_args():
         "-b",
         "--backup",
         default="all",
-        choices=["all", "scripts", "prompts", "documents"],
+        choices=["all", "script", "prompt", "document"],
         help="what to backup (scripts, prompts, documents or all) default:all",
     )
     # parser.add_argument(
