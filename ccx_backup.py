@@ -2,12 +2,14 @@
 
 from datetime import datetime
 from pathlib import Path
-import requests
-from cli_parser import parse_args
 from typing import List
+
+import requests
 
 # surpresssing certificate warnings, bad idea, but probably required for this
 from urllib3.exceptions import InsecureRequestWarning
+
+from cli_parser import parse_args
 
 # Suppress the warnings from urllib3
 requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
