@@ -1,7 +1,7 @@
 import argparse
 
 
-def parse_args():
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Backup Scripts, Prompts, and/or Documents from a UCCX server"

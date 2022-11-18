@@ -4,6 +4,7 @@ from datetime import datetime
 from pathlib import Path
 import requests
 from cli_parser import parse_args
+from typing import List
 
 # surpresssing certificate warnings, bad idea, but probably required for this
 from urllib3.exceptions import InsecureRequestWarning
@@ -18,13 +19,13 @@ class CcxServer:
 
     """
 
-    def __init__(self, user, password, ip) -> None:
+    def __init__(self, user: str, password: str, ip: str) -> None:
         self.user = user
         self.password = password
         self.base_url = f"https://{ip}/adminapi"
         self.verify_cert = False  # bad idea but required for this
 
-    def backup(self, backup_root_dir, resource):
+    def backup(self, backup_root_dir: str, resource: str) -> None:
         """backup method is the only method that should be directly called
         it will trigger a few subsequent flows to backup all sepcified files
 
@@ -37,7 +38,7 @@ class CcxServer:
         file_list = self._get_file_list(resource)
         self._download_files(resource, file_list)
 
-    def _get_file_list(self, resource, path="/"):
+    def _get_file_list(self, resource: str, path="/") -> List[str]:
         """call the api endpoint to get list of files recurively search
         through folders and parse the responses to generate and return
         a list of files with their folder path
@@ -73,7 +74,7 @@ class CcxServer:
                 file_list.append(file["path"] + file["FileName"])
         return file_list
 
-    def _download_files(self, resource, path_list):
+    def _download_files(self, resource: str, path_list: List[str]) -> None:
         """loop over file list and call function to download each file
 
         Args:
@@ -83,7 +84,7 @@ class CcxServer:
         for path in path_list:
             self._download_file(resource, path)
 
-    def _download_file(self, resource, path):
+    def _download_file(self, resource: str, path: str) -> None:
         """download and save each file
 
         Args:
