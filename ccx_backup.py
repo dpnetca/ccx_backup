@@ -70,8 +70,11 @@ def main():
     args = parse_args()
     ccx = CcxServer(args.user, args.password, args.ip_address)
 
-    now = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
-    backup_root_folder = "backup-" + now
+    if args.output_dir:
+        backup_root_folder = args.output_dir
+    else:
+        now = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+        backup_root_folder = "backup-" + now
     Path(backup_root_folder).mkdir()
 
     if args.backup in ["all", "script"]:
