@@ -119,7 +119,7 @@ def main():
     if args.output_dir:
         backup_root_folder = args.output_dir
     else:
-        now = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+        now = datetime.now().strftime("%Y%m%d%H%M%S")
         backup_root_folder = "backup-" + now
     Path(backup_root_folder).mkdir()
 
