@@ -27,3 +27,4 @@ Features / Enhancements to add sometime maybe
 - don't ignore SSL certificate warnings by default, add a flag to allow user to determine if ignored
 - improve documentation
 - review how and when folders are created
+- rename ip command arugument, really it should be hostname, either ip or host should work...
