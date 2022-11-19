@@ -95,7 +95,7 @@ class CcxServer:
             path (stt): file path to file
         """
         bu_path = f"{self.backup_root_dir}/{resource}{path}"
-        Path(bu_path).parents[0].mkdir(parents=True, exist_ok=True)
+        Path(bu_path).parent.mkdir(parents=True, exist_ok=True)
 
         url = f"{self.base_url}/{resource}/download{path}"
         headers = {"Accept": "application/json"}
